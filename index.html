@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DIABLO PRADDO — O Homem Demônio · Official</title>
+<meta name="description" content="Diablo Praddo — Guinness-Weltrekordhalter, 33 subdermale Horn-Implantate. Merch, Membership & Brand Collabs." />
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;600;800;900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Pirata+One&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --black:#0a0807;
+  --char:#13100e;
+  --char2:#1b1714;
+  --bone:#ece4d4;
+  --bone-dim:#b8ad99;
+  --muted:#7d7263;
+  --blood:#b30f12;
+  --blood-bright:#e21419;
+  --ember:#ff5a1f;
+  --ember-soft:#ff8a4c;
+  --gold:#caa44a;
+  --line:rgba(236,228,212,.12);
+  --line-blood:rgba(226,20,25,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--bone);
+  font-family:'Spectral',Georgia,serif;
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* ---------- grain + ambient ---------- */
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.5}
+.glow.a{width:520px;height:520px;top:-160px;left:-120px;background:radial-gradient(circle,rgba(226,20,25,.55),transparent 70%)}
+.glow.b{width:640px;height:640px;bottom:-220px;right:-180px;background:radial-gradient(circle,rgba(255,90,31,.30),transparent 70%)}
+::selection{background:var(--blood-bright);color:#fff}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--blood);border:3px solid var(--black)}
+
+/* ---------- type helpers ---------- */
+.display{font-family:'Bebas Neue',sans-serif;font-weight:400;line-height:.86;letter-spacing:.01em}
+.cinzel{font-family:'Cinzel',serif}
+.mono{font-family:'JetBrains Mono',monospace}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ember-soft)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+/* ---------- pitch banner ---------- */
+#pitch{
+  position:relative;z-index:50;background:linear-gradient(90deg,var(--blood),var(--ember));
+  color:#1a0c05;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;
+  display:flex;align-items:center;justify-content:center;gap:14px;padding:9px 44px 9px 16px;text-align:center;font-weight:500;
+}
+#pitch b{font-weight:700}
+#pitch .x{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;border:1px solid rgba(0,0,0,.4);
+  width:20px;height:20px;display:grid;place-items:center;border-radius:2px;font-size:.8rem;line-height:1}
+#pitch .x:hover{background:rgba(0,0,0,.18)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);background:rgba(10,8,7,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .mark{width:50px;height:50px;object-fit:contain}
+.brand .name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.08em;line-height:1}
+.brand .name small{display:block;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.34em;color:var(--muted)}
+.navlinks{display:flex;gap:30px}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);transition:color .2s;position:relative}
+.navlinks a:hover{color:var(--bone)}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--ember);transition:width .25s}
+.navlinks a:hover::after{width:100%}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--blood);padding:9px 16px;color:var(--bone);transition:.2s}
+.nav-cta:hover{background:var(--blood);box-shadow:0 0 24px rgba(226,20,25,.5)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--line)}
+.lang button{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:7px 8px;color:var(--muted);background:none;border:none;border-left:1px solid var(--line);cursor:pointer;transition:.15s}
+.lang button:first-child{border-left:none}
+.lang button.on{background:var(--blood);color:#fff}
+.lang button:hover:not(.on){color:var(--bone)}
+@media(max-width:880px){.lang button{padding:6px 6px}}
+@media(max-width:880px){.navlinks{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:0}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.62;will-change:transform}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,8,7,.5),rgba(10,8,7,.12) 40%,rgba(10,8,7,.94)),radial-gradient(120% 80% at 78% 22%,rgba(226,20,25,.22),transparent 55%)}
+.hero .wrap.hero-inner{display:block;position:relative;z-index:2;padding:118px 28px 96px;width:100%}
+.hero-stat-row{display:flex;align-items:baseline;gap:14px;margin-top:34px}
+.hero-stat-row .num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:.9;color:var(--bone)}
+.hero-stat-row .lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--bone-dim);text-transform:uppercase}
+.scroll-cue{position:absolute;bottom:96px;left:50%;transform:translateX(-50%);z-index:3;width:24px;height:38px;border:1px solid rgba(236,228,212,.3);border-radius:14px;display:grid;justify-items:center;padding-top:7px}
+.scroll-cue span{width:3px;height:8px;background:var(--ember);border-radius:2px;animation:cue 1.6s ease-in-out infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(-3px)}40%{opacity:1}100%{opacity:0;transform:translateY(11px)}}
+/* ---------- manifesto scroll-scrub ---------- */
+.manifesto{position:relative;height:360vh;background:#000;z-index:2}
+.manifesto-sticky{position:sticky;top:0;height:100svh;overflow:hidden}
+#scrubCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
+.manifesto-vail{position:absolute;inset:0;z-index:2;background:radial-gradient(circle at 50% 44%,transparent 22%,rgba(10,8,7,.5) 70%),linear-gradient(180deg,rgba(10,8,7,.72),transparent 24%,transparent 70%,rgba(10,8,7,.95))}
+.manifesto-words{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 24px;z-index:3;pointer-events:none}
+.mword{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,11vw,9.5rem);line-height:.9;letter-spacing:.02em;color:var(--bone);opacity:0;transform:translateY(28px) scale(.96);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1);text-shadow:0 8px 60px rgba(0,0,0,.9);max-width:20ch}
+.mword.on{opacity:1;transform:none}
+.mword b{color:var(--blood-bright);font-weight:400}
+.mword small{display:block;font-family:'JetBrains Mono',monospace;font-size:clamp(.6rem,1.4vw,.8rem);letter-spacing:.3em;color:var(--ember-soft);margin-top:20px;text-transform:uppercase}
+.manifesto-progress{position:absolute;left:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--blood),var(--ember));z-index:4;width:0;box-shadow:0 0 16px rgba(255,90,31,.6)}
+.mf-brazil{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);width:min(66vh,580px);max-width:84%;opacity:0;transition:opacity .7s ease,transform .8s ease;mix-blend-mode:screen;filter:drop-shadow(0 0 45px rgba(226,20,25,.4));z-index:2;pointer-events:none}
+.mf-brazil.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--line);padding:7px 11px;display:flex;align-items:center;gap:7px;color:var(--bone-dim)}
+.badge.gold{border-color:rgba(202,164,74,.5);color:var(--gold)}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--ember);box-shadow:0 0 8px var(--ember)}
+h1.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.4rem,13vw,11rem);line-height:.8;letter-spacing:.005em;
+  background:linear-gradient(180deg,#fff5ec 0%,var(--bone) 30%,#a8210f 105%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 60px rgba(226,20,25,.25)}
+.title .sub{display:block;font-family:'Pirata One',cursive;font-size:clamp(1.4rem,4vw,2.6rem);letter-spacing:.04em;color:var(--ember);
+  -webkit-text-fill-color:var(--ember);margin-top:8px;text-shadow:0 0 30px rgba(255,90,31,.5)}
+.hero p.lede{font-size:1.06rem;color:var(--bone-dim);max-width:30ch;margin:24px 0 30px;line-height:1.55}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:15px 26px;
+  display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:1px solid transparent;transition:.22s;font-weight:500}
+.btn-primary{background:var(--blood);color:#fff;box-shadow:0 0 0 rgba(226,20,25,0)}
+.btn-primary:hover{background:var(--blood-bright);box-shadow:0 0 34px rgba(226,20,25,.55);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--bone)}
+.btn-ghost:hover{border-color:var(--ember);color:var(--ember)}
+.hero-figure{position:relative;display:grid;place-items:center;min-height:380px}
+.sigil{position:relative;z-index:2;width:min(100%,400px);mix-blend-mode:screen;filter:drop-shadow(0 0 60px rgba(226,20,25,.55));animation:float 7s ease-in-out infinite}
+.sigil-ring{position:absolute;width:min(96%,440px);aspect-ratio:1;border:1px solid var(--line-blood);border-radius:50%;z-index:1}
+.sigil-ring::after{content:"";position:absolute;inset:14px;border:1px dashed rgba(236,228,212,.1);border-radius:50%;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-14px)}}
+.hero-stats{position:absolute;bottom:18px;right:0;text-align:right}
+.hero-stats .num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:.9;color:var(--bone)}
+.hero-stats .lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+@media(max-width:880px){.hero .wrap{grid-template-columns:1fr}.hero-figure{min-height:240px;order:-1}.hero-stats{position:static;text-align:left;margin-top:10px}}
+
+/* ---------- marquee ---------- */
+.marquee{position:relative;z-index:3;border-top:1px solid var(--line-blood);border-bottom:1px solid var(--line-blood);
+  background:#0c0908;overflow:hidden;white-space:nowrap;padding:13px 0}
+.marquee .track{display:inline-block;animation:scroll 26s linear infinite}
+.marquee .track>span{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;margin:0 26px;color:var(--bone)}
+.marquee .o{color:var(--blood-bright);margin:0}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- section base ---------- */
+section{position:relative;z-index:2}
+.sec-pad{padding:96px 0}
+.sec-head{margin-bottom:50px;max-width:760px}
+.sec-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,6vw,4.6rem);line-height:.92;letter-spacing:.01em;margin:14px 0 0}
+.sec-head h2 em{font-style:normal;color:var(--blood-bright)}
+.sec-head p{color:var(--bone-dim);margin-top:16px;font-size:1.04rem;max-width:60ch}
+
+/* ---------- story ---------- */
+.story{border-top:1px solid var(--line)}
+.story-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:center}
+.story-grid p{font-size:1.08rem;color:var(--bone-dim);margin-bottom:18px}
+.story-grid p .lead{color:var(--bone);font-weight:500}
+.dropcap::first-letter{font-family:'Cinzel',serif;font-weight:900;float:left;font-size:4.2rem;line-height:.78;padding:6px 12px 0 0;color:var(--blood-bright)}
+.statwall{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.statwall .cell{background:var(--char);padding:26px 22px}
+.statwall .n{font-family:'Bebas Neue',sans-serif;font-size:3.3rem;line-height:.86;color:var(--ember)}
+.statwall .n.gold{color:var(--gold)}
+.statwall .t{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.story-right{display:flex;flex-direction:column;gap:16px}
+.legend-map{display:block;width:min(96%,480px);margin:0 auto;animation:mapGlow 4.5s ease-in-out infinite}
+@keyframes mapGlow{0%,100%{filter:drop-shadow(0 0 24px rgba(226,20,25,.5)) drop-shadow(0 0 60px rgba(255,90,31,.2))}50%{filter:drop-shadow(0 0 42px rgba(226,20,25,.75)) drop-shadow(0 0 95px rgba(255,90,31,.4))}}
+.legend-cap{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember-soft);text-align:center;margin-top:-2px}
+@media(max-width:880px){.story-grid{grid-template-columns:1fr;gap:34px}}
+
+/* ---------- content / reels ---------- */
+.proof{border-top:1px solid var(--line);background:var(--char)}
+.media-row{display:flex;gap:34px;align-items:center;flex-wrap:wrap;margin-bottom:42px;opacity:.8}
+.media-row .ml{font-family:'Cinzel',serif;font-weight:800;font-size:1.15rem;letter-spacing:.04em;color:var(--bone-dim)}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.reel-card{background:#000;border:1px solid var(--line);min-height:420px;display:flex;flex-direction:column;overflow:hidden}
+.reel-card .instagram-media{margin:0 auto!important;min-width:unset!important;width:100%!important}
+.reel-fallback{padding:22px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;
+  background:linear-gradient(180deg,rgba(226,20,25,.08),#000 70%);min-height:420px}
+.reel-fallback .h{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--bone)}
+.reel-fallback .l{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.14em;color:var(--ember);margin-top:6px}
+.reel-fallback a{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.12em;color:var(--bone-dim);border-bottom:1px solid var(--line);padding-bottom:3px;width:fit-content}
+@media(max-width:880px){.reels{grid-template-columns:1fr}}
+
+/* ---------- merch ---------- */
+.drop{border-top:1px solid var(--line)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.prod{border:1px solid var(--line);background:var(--char);transition:.25s;position:relative;overflow:hidden}
+.prod:hover{border-color:var(--line-blood);transform:translateY(-5px);box-shadow:0 24px 60px -30px rgba(226,20,25,.6)}
+.prod .art{height:300px;position:relative;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.prod .art .tag{position:absolute;top:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--blood);color:#fff;padding:5px 9px;z-index:3}
+.prod .art .tag.sold{background:#2a2522;color:var(--bone-dim)}
+.prod .art .pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.prod:hover .art .pimg{transform:scale(1.05)}
+.prod .art .ghost{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(236,228,212,.05);position:absolute;letter-spacing:.05em;white-space:nowrap}
+.prod .art .glyph{width:120px;color:var(--blood-bright);opacity:.92;z-index:2;filter:drop-shadow(0 0 26px rgba(226,20,25,.45));transition:.4s}
+.prod:hover .art .glyph{transform:scale(1.08) rotate(-2deg)}
+.prod .art.tee{background:radial-gradient(circle at 50% 35%,#241a17,#0c0908)}
+.prod .art.hood{background:radial-gradient(circle at 50% 40%,#1c1714,#090706)}
+.prod .art.cap{background:radial-gradient(circle at 50% 45%,#201614,#0a0807)}
+.prod .art.print{background:radial-gradient(circle at 50% 40%,#2a1410,#0c0706)}
+.prod .art.jewel{background:radial-gradient(circle at 50% 45%,#161310,#070605)}
+.prod .art.figure{background:radial-gradient(circle at 50% 40%,#251c12,#0a0806)}
+.prod .info{padding:18px 18px 20px}
+.prod .info .pt{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;line-height:1}
+.prod .info .pd{font-size:.86rem;color:var(--muted);margin:5px 0 14px;line-height:1.4;font-style:italic}
+.prod .row{display:flex;align-items:center;justify-content:space-between}
+.prod .price{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--bone);font-weight:500}
+.prod .price s{color:var(--muted);font-size:.8rem;margin-right:6px}
+.prod .add{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--blood);padding:9px 14px;cursor:pointer;transition:.2s;color:var(--bone)}
+.prod .add:hover{background:var(--blood)}
+.prod .bar{height:3px;background:var(--char2);margin-top:14px;position:relative;overflow:hidden}
+.prod .bar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--blood),var(--ember))}
+.prod .bar+.stk{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:var(--muted);margin-top:7px;text-transform:uppercase}
+@media(max-width:880px){.prod-grid{grid-template-columns:1fr}}
+
+/* ---------- membership ---------- */
+.culto{border-top:1px solid var(--line);background:var(--char)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tier{border:1px solid var(--line);padding:30px 26px;display:flex;flex-direction:column;background:var(--black);position:relative}
+.tier.feat{border-color:var(--blood);box-shadow:0 0 50px -20px rgba(226,20,25,.7)}
+.tier .tier-badge{position:absolute;top:-1px;right:-1px;background:var(--blood);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.14em;padding:5px 10px}
+.tier .tn{font-family:'Cinzel',serif;font-weight:800;font-size:1.05rem;letter-spacing:.06em;color:var(--ember-soft)}
+.tier .tp{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;line-height:.9;margin:14px 0 4px}
+.tier .tp span{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);letter-spacing:.05em}
+.tier ul{list-style:none;margin:20px 0 26px;flex:1}
+.tier li{font-size:.92rem;color:var(--bone-dim);padding:9px 0 9px 24px;position:relative;border-bottom:1px dashed var(--line)}
+.tier li::before{content:"▲";position:absolute;left:0;top:9px;color:var(--blood-bright);font-size:.66rem}
+.tier .tbtn{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;
+  padding:13px;border:1px solid var(--line);cursor:pointer;transition:.2s}
+.tier.feat .tbtn{background:var(--blood);border-color:var(--blood);color:#fff}
+.tier .tbtn:hover{border-color:var(--ember);color:var(--ember)}
+.tier.feat .tbtn:hover{background:var(--blood-bright);color:#fff}
+@media(max-width:880px){.tiers{grid-template-columns:1fr}}
+
+/* ---------- brands ---------- */
+.brands{border-top:1px solid var(--line)}
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.offer{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.offer .o{background:var(--black);padding:22px 24px;display:flex;gap:18px;align-items:flex-start}
+.offer .o .oi{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--blood-bright);min-width:42px}
+.offer .o h4{font-family:'Cinzel',serif;font-weight:600;font-size:1rem;letter-spacing:.03em;margin-bottom:4px}
+.offer .o p{font-size:.9rem;color:var(--muted)}
+.ratecard{border:1px solid var(--line-blood);background:linear-gradient(180deg,rgba(226,20,25,.06),var(--char));padding:30px}
+.ratecard h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.03em;margin-bottom:4px}
+.ratecard .sub{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;color:var(--ember);text-transform:uppercase;margin-bottom:22px}
+.rate-line{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.rate-line .rl{font-size:.96rem;color:var(--bone-dim)}
+.rate-line .rv{font-family:'JetBrains Mono',monospace;color:var(--bone);font-weight:500}
+.ratecard .disc{font-size:.74rem;color:var(--muted);margin-top:18px;font-style:italic}
+@media(max-width:880px){.brand-grid{grid-template-columns:1fr;gap:34px}}
+
+/* ---------- potential / calculator ---------- */
+.potential{border-top:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgba(226,20,25,.12),var(--black) 60%)}
+.calc{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:center;margin-top:20px}
+.calc-controls .ctl{margin-bottom:26px}
+.calc-controls label{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.74rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:12px}
+.calc-controls label b{color:var(--ember);font-weight:700}
+input[type=range]{-webkit-appearance:none;width:100%;height:3px;background:var(--char2);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--blood-bright);box-shadow:0 0 16px rgba(226,20,25,.8);border:2px solid var(--bone)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--blood-bright);border:2px solid var(--bone)}
+.calc-out{border:1px solid var(--line-blood);background:var(--char);padding:34px}
+.calc-out .today{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.calc-out .today .k{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.calc-out .today .v{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--blood)}
+.calc-out .big{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
+.calc-out .total{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.4rem,9vw,6rem);line-height:.86;
+  background:linear-gradient(180deg,#fff,var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent;margin:6px 0}
+.calc-out .per{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--bone-dim);margin-bottom:24px}
+.calc-out .per b{color:var(--gold)}
+.breakdown{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.breakdown .bd{background:var(--black);padding:13px 16px;display:flex;justify-content:space-between;align-items:center}
+.breakdown .bd .bl{font-size:.88rem;color:var(--bone-dim)}
+.breakdown .bd .bv{font-family:'JetBrains Mono',monospace;font-size:.92rem;color:var(--bone)}
+.calc-note{font-size:.74rem;color:var(--muted);margin-top:18px;font-style:italic;line-height:1.5}
+@media(max-width:880px){.calc{grid-template-columns:1fr;gap:32px}}
+
+/* ---------- contact ---------- */
+.contact{border-top:1px solid var(--line);background:var(--char)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px}
+.contact h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.9;letter-spacing:.01em}
+.contact h2 em{font-style:normal;color:var(--blood-bright)}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;background:var(--black);border:1px solid var(--line);color:var(--bone);
+  padding:13px 14px;font-family:'Spectral',serif;font-size:.96rem;outline:none;transition:.2s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ember)}
+.field textarea{resize:vertical;min-height:110px}
+.socials{margin-top:30px;display:flex;flex-direction:column;gap:2px}
+.soc{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);transition:.2s}
+.soc:hover{padding-left:8px;border-color:var(--ember)}
+.soc .sn{font-family:'Cinzel',serif;font-weight:600;font-size:1.05rem}
+.soc .sh{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted)}
+.soc:hover .sh{color:var(--ember)}
+@media(max-width:880px){.contact-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line-blood);padding:48px 0 36px}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+.foot .fb{max-width:46ch}
+.foot .fb .ftitle{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.06em}
+.foot .fb p{font-size:.78rem;color:var(--muted);margin-top:10px;line-height:1.6}
+.foot .credit{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--bone-dim);text-align:right}
+.foot .credit b{color:var(--ember)}
+.foot .credit span{color:var(--muted);display:block;margin-top:6px}
+.rs-logo{height:56px;width:auto;display:block;margin:0 0 16px auto;opacity:.95}
+
+/* ---------- toast / cart ---------- */
+#cartbtn{position:fixed;bottom:24px;right:24px;z-index:60;background:var(--blood);color:#fff;font-family:'JetBrains Mono',monospace;
+  font-size:.74rem;letter-spacing:.1em;padding:14px 18px;display:flex;gap:10px;align-items:center;cursor:pointer;
+  box-shadow:0 14px 40px -10px rgba(226,20,25,.7);transition:.2s;transform:translateY(120px)}
+#cartbtn.show{transform:translateY(0)}
+#cartbtn:hover{background:var(--blood-bright)}
+#bookbtn{position:fixed;bottom:24px;left:24px;z-index:60;background:var(--bone);color:#0a0807;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:14px 20px;box-shadow:0 14px 40px -12px rgba(0,0,0,.7);transition:.2s}
+#bookbtn:hover{background:#fff;transform:translateY(-2px);box-shadow:0 16px 44px -10px rgba(226,20,25,.5)}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:22px}
+.pull{font-family:'Spectral',serif;font-style:italic;font-size:clamp(1.4rem,3.2vw,2.3rem);color:var(--bone);border-left:3px solid var(--blood);padding:8px 0 8px 26px;margin:0 0 44px;max-width:26ch;line-height:1.25}
+.book-cta{margin:8px 0 30px}
+@media(max-width:880px){#bookbtn{bottom:18px;left:18px;padding:12px 16px;font-size:.66rem}}
+#cartbtn .cc{background:#fff;color:var(--blood);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-weight:700;font-size:.7rem}
+#toast{position:fixed;bottom:24px;left:50%;transform:transl(-50%,140px);z-index:70;background:var(--char2);border:1px solid var(--blood);
+  color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.06em;padding:13px 20px;
+  transform:translate(-50%,140px);transition:.3s;display:flex;gap:10px;align-items:center}
+#toast.show{transform:translate(-50%,0)}
+#toast .ic{color:var(--ember)}
+
+/* ---------- doku / netflix ---------- */
+.doku{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--black),#170b0a 50%,var(--black))}
+.doku .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
+.poster{position:relative;aspect-ratio:3/4;border:1px solid var(--line-blood);background:#000;overflow:hidden;display:grid;place-items:center}
+.poster img{width:108%;height:108%;object-fit:cover;object-position:center 20%;mix-blend-mode:screen;filter:contrast(1.05) drop-shadow(0 0 40px rgba(226,20,25,.4))}
+.poster .pgrad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,8,7,.85))}
+.poster .ptag{position:absolute;top:16px;right:14px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.18em;
+  background:rgba(10,8,7,.72);border:1px solid var(--line);color:var(--bone-dim);padding:5px 9px;text-transform:uppercase;backdrop-filter:blur(4px)}
+.poster .pname{position:absolute;left:16px;bottom:14px;z-index:3;font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;color:var(--bone)}
+.poster .play{position:absolute;inset:0;display:grid;place-items:center;z-index:3}
+.poster .play b{width:74px;height:74px;border-radius:50%;background:rgba(226,20,25,.94);display:grid;place-items:center;color:#fff;
+  font-size:1.5rem;padding-left:5px;box-shadow:0 0 48px rgba(226,20,25,.7);cursor:pointer;transition:.2s;animation:pulse 2.6s ease-out infinite}
+.poster .play b:hover{transform:scale(1.09)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(226,20,25,.6)}70%{box-shadow:0 0 0 26px rgba(226,20,25,0)}100%{box-shadow:0 0 0 0 rgba(226,20,25,0)}}
+.nflx-row{display:flex;align-items:center;gap:16px;margin-bottom:2px}
+.nflx-logo{height:23px;width:auto;display:block}
+.nflx-doc{font-family:'Bebas Neue',sans-serif;letter-spacing:.24em;color:var(--bone-dim);font-size:1.05rem;text-transform:uppercase;border-left:1px solid var(--line);padding-left:16px}
+.poster img.poster-n{position:absolute;inset:14px auto auto 16px;height:30px;width:auto;object-fit:contain;z-index:4;filter:drop-shadow(0 3px 12px rgba(0,0,0,.8))}
+.dtitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);line-height:.84;letter-spacing:.01em;margin:14px 0 0}
+.dtitle b{color:var(--blood-bright);font-weight:400}
+.dtitle span{display:block;font-family:'Spectral',serif;font-style:italic;font-weight:400;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--bone-dim);letter-spacing:0;margin-top:18px;line-height:1.4}
+.dmeta{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0}
+@media(max-width:880px){.doku .wrap{grid-template-columns:1fr;gap:30px}.poster{max-width:330px}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="glow a"></div><div class="glow b"></div>
+
+<!-- PITCH BANNER (Demo-Framing, schließbar) -->
+<div id="pitch">
+  <span data-i18n="pitch">⚑ <b>KONZEPT-DEMO</b>: so könnte deine Marke aussehen und <b>Geld verdienen</b>. Preise/Produkte sind Vorschläge.</span>
+  <div class="x" onclick="document.getElementById('pitch').style.display='none'">✕</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <img class="mark" src="assets/logo-mark.svg" alt="DP" />
+      <div class="name">DIABLO PRADDO<small>O HOMEM DEMÔNIO</small></div>
+    </a>
+    <div class="navlinks">
+      <a href="#story" data-i18n="nav_story">Story</a>
+      <a href="#doku" data-i18n="nav_doku">Doku</a>
+      <a href="#drop" data-i18n="nav_drop">Drop</a>
+      <a href="#brands" data-i18n="nav_brands">Brands</a>
+      <a href="#potential" data-i18n="nav_potential">Potenzial</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang" id="lang">
+        <button data-lang="pt">PT</button><button data-lang="en">EN</button><button data-lang="de">DE</button><button data-lang="es">ES</button>
+      </div>
+      <a href="#drop" class="nav-cta" data-i18n="nav_shop">Shop →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-badges">
+      <span class="badge gold"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg> <span data-i18n="hero_b1">Guinness World Record · 2023</span></span>
+    </div>
+    <h1 class="title">DIABLO<br>PRADDO<span class="sub">o diabão</span></h1>
+    <div class="hero-tag" data-i18n="hero_tag">★ Born in Brazil · von der Straße zum Guinness-Weltrekord</div>
+    <p class="lede" data-i18n="hero_lede">Der Mann, der seinen Körper in einen Mythos verwandelt hat. 33 Hörner. Weltrekord. Eine Marke, die es so kein zweites Mal gibt.</p>
+    <div class="hero-cta">
+      <a href="#drop" class="btn btn-primary" data-i18n="hero_cta1">Shop The Drop →</a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="book_now">Buch jetzt →</a>
+    </div>
+  </div>
+  <a href="#manifesto" class="scroll-cue" aria-label="scroll"><span></span></a>
+  <div class="marquee">
+    <div class="track" data-i18n="marquee">
+      <span>GUINNESS W<span class="o">●</span>RLD RECORD</span><span>33 H<span class="o">●</span>RN-IMPLANTATE</span><span>80% TÄT<span class="o">●</span>WIERT</span><span>O HOMEM DEMÔNIO</span><span>PRAIA GRANDE · BRASIL</span><span>GUINNESS W<span class="o">●</span>RLD RECORD</span><span>33 H<span class="o">●</span>RN-IMPLANTATE</span><span>80% TÄT<span class="o">●</span>WIERT</span><span>O HOMEM DEMÔNIO</span><span>PRAIA GRANDE · BRASIL</span>
+    </div>
+  </div>
+</header>
+
+<!-- MANIFESTO / SCROLL-SCRUB -->
+<section class="manifesto" id="manifesto">
+  <div class="manifesto-sticky">
+    <canvas id="scrubCanvas"></canvas>
+    <div class="manifesto-vail"></div>
+    <div class="manifesto-words">
+      <h2 class="mword" data-i18n="mf_1">NASCIDO NO <b>BRASIL</b></h2>
+      <h2 class="mword" data-i18n="mf_2">DA RUA AO <b>TOPO</b></h2>
+      <h2 class="mword" data-i18n="mf_3">33 <b>CHIFRES</b><small>Recorde Mundial Guinness</small></h2>
+      <h2 class="mword" data-i18n="mf_4">O <b>DIABÃO</b><small>500.000 seguidores</small></h2>
+    </div>
+    <div class="manifesto-progress" id="mProg"></div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story sec-pad" id="story">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" data-i18n="st_kicker">01 · Die Legende</div>
+      <h2 data-i18n="st_h2">Kein Kostüm.<br>Ein <em>Lebenswerk.</em></h2>
+    </div>
+    <div class="story-grid">
+      <div class="reveal">
+        <p class="dropcap" data-i18n="st_p1"><span class="lead">Michel Faro Praddo</span> ist seit 1994 Tätowierer. Heute ist er „Diabão", der Teufel von Praia Grande. Über drei Jahrzehnte hat er seinen Körper zur Skulptur gemacht: über 80% tätowiert, die Augen geschwärzt, beide Ohren entfernt, Finger zu Klauen geformt, die Zunge gespalten.</p>
+        <p data-i18n="st_p2">2023 macht es Guinness offiziell: <span class="lead">33 subdermale Horn-Implantate</span> am Kopf. Weltrekord, verifiziert live in Mailand. Reuters, RTL und Millionen auf TikTok berichten. Er ist kein Avatar. Er ist das echte Ding in einer Welt voller Filter.</p>
+        <p data-i18n="st_p3">Und genau das ist die Marke: ein Gesicht, das man nie wieder vergisst. Eine Geschichte, die sich von selbst erzählt. Reichweite, die längst da ist, nur noch nie zu Geld gemacht wurde.</p>
+      </div>
+      <div class="reveal story-right">
+        <img class="legend-map" src="assets/brazil-scene.png" alt="Praia Grande, São Paulo, Brasil" />
+        <div class="legend-cap">Praia Grande · São Paulo · Brasil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF / REELS -->
+<section class="proof sec-pad" id="content">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" data-i18n="pr_kicker">02 · Wie ihn die Welt sieht</div>
+      <h2 data-i18n="pr_h2">Earned Media im <em>Millionenbereich.</em></h2>
+      <p data-i18n="pr_p">Große Medien und tausende Creator nutzen sein Bild bereits, kostenlos. Das ist die Aufmerksamkeit, die andere Marken teuer kaufen müssen.</p>
+    </div>
+    <div class="media-row reveal">
+      <span class="ml">GUINNESS</span><span class="ml">REUTERS</span><span class="ml">RTL</span><span class="ml">VICE</span><span class="ml">TIKTOK VIRALS</span>
+    </div>
+    <div class="reels reveal">
+      <div class="reel-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXb5rKWNGBB/" data-instgrm-version="14">
+          <div class="reel-fallback"><div class="h">@diabao.praddo</div><div class="l">Guinness World Record Holder</div><a href="https://www.instagram.com/reel/DXb5rKWNGBB/" target="_blank" rel="noopener" data-i18n="pr_watch">Reel auf Instagram ansehen →</a></div>
+        </blockquote>
+      </div>
+      <div class="reel-card">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C7PkxFHOtmV/" data-instgrm-version="14">
+          <div class="reel-fallback"><div class="h">Tattoo Convention</div><div class="l">Body Modification · Live</div><a href="https://www.instagram.com/reel/C7PkxFHOtmV/" target="_blank" rel="noopener" data-i18n="pr_watch">Reel auf Instagram ansehen →</a></div>
+        </blockquote>
+      </div>
+      <div class="reel-card">
+        <div class="reel-fallback" style="justify-content:center;text-align:center;align-items:center">
+          <div class="h" style="font-size:2.6rem;color:var(--blood-bright)">+500K</div>
+          <div class="l" data-i18n="pr_follow">Folge dem Original</div>
+          <a href="https://www.instagram.com/diabao.praddo_diablo.praddo/" target="_blank" rel="noopener" style="margin-left:auto;margin-right:auto">@diabao.praddo_diablo.praddo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETFLIX DOKU -->
+<section class="doku sec-pad" id="doku">
+  <div class="wrap">
+    <div class="poster reveal">
+      <img src="assets/his-poster.jpg" alt="Diabão Praddo — Doku" />
+      <div class="pgrad"></div>
+      <img class="poster-n" src="assets/netflix-n.svg" alt="Netflix" />
+      <span class="ptag" data-i18n="dk_ptag">★ Official · In Development</span>
+      <div class="play"><b onclick="showToast(t('toast_trailer'))">▶</b></div>
+      <span class="pname">DIABÃO</span>
+    </div>
+    <div class="reveal">
+      <div class="nflx-row">
+        <img class="nflx-logo" src="assets/netflix-wordmark.svg" alt="Netflix" />
+        <span class="nflx-doc" data-i18n="dk_nflx">Eine Dokumentation</span>
+      </div>
+      <h2 class="dtitle" data-i18n="dk_title">VOM MENSCH<br>ZUM <b>DÄMON</b><span>Die wahre Geschichte hinter 33 Hörnern, amputierten Ohren und einem Mann, der seinen Körper zur Religion gemacht hat. Streaming-Doku in Entwicklung.</span></h2>
+      <div class="dmeta">
+        <span class="badge"><span class="dot"></span><span data-i18n="dk_b1">Netflix / Streaming-Format</span></span>
+        <span class="badge gold" data-i18n="dk_b2">Lizenz + globale Reichweite</span>
+        <span class="badge" data-i18n="dk_b3">Status: in Entwicklung</span>
+      </div>
+      <p style="color:var(--bone-dim);max-width:48ch;margin-bottom:24px" data-i18n="dk_p">Eine Doku macht aus einer Internet-Kuriosität eine weltweite Marke und bringt Lizenzgebühren, Presse und einen Reichweiten-Sprung, von dem Merch, Membership und Brand-Deals alle profitieren.</p>
+      <a href="#contact" class="btn btn-ghost" data-i18n="dk_btn">Produktions-Anfrage →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DROP / MERCH -->
+<section class="drop sec-pad" id="drop">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" data-i18n="dr_kicker">03 · The Drop · Devil Edition</div>
+      <h2 data-i18n="dr_h2">Trag den <em>Teufel.</em></h2>
+      <p data-i18n="dr_p">Limitierte Capsule. Jedes Stück nummeriert. Schwarz auf Schwarz, Blutrot als Statement. Print-on-Demand, null Lagerrisiko, Marge ab dem ersten Verkauf.</p>
+    </div>
+    <div class="prod-grid reveal">
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_hoodie_zip.png" alt="Demon Head Zip Hoodie" /><span class="tag">All-Over</span></div>
+        <div class="info">
+          <div class="pt">Demon Head Zip Hoodie</div>
+          <div class="pd" data-i18n="mp_d1">Schwerer Zip-Hoodie, durchgehender Front-Print.</div>
+          <div class="row"><div class="price">€ 89</div><div class="add" data-p="Demon Head Zip Hoodie" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:64%"></i></div><div class="stk">237 / 333</div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_hoodie_nozip.png" alt="Demon Head Hoodie" /><span class="tag">Limited · 333</span></div>
+        <div class="info">
+          <div class="pt">Demon Head Hoodie</div>
+          <div class="pd" data-i18n="mp_d2">Oversized Pullover-Hoodie, 450gsm, Front-Print.</div>
+          <div class="row"><div class="price">€ 79</div><div class="add" data-p="Demon Head Hoodie" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:71%"></i></div><div class="stk">Bestseller</div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_tee_1.png" alt="Head Tee Mono" /><span class="tag">New</span></div>
+        <div class="info">
+          <div class="pt">Head Tee — Mono</div>
+          <div class="pd" data-i18n="mp_d3">Boxy Heavy-Tee, Schwarz-Weiß-Kopf-Print.</div>
+          <div class="row"><div class="price">€ 39</div><div class="add" data-p="Head Tee Mono" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:40%"></i></div><div class="stk">New drop</div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_tee_2.png" alt="Head Tee Blood" /><span class="tag">New</span></div>
+        <div class="info">
+          <div class="pt">Head Tee — Blood</div>
+          <div class="pd" data-i18n="mp_d4">Tee mit Kopf im roten Gothic-Rahmen.</div>
+          <div class="row"><div class="price">€ 42</div><div class="add" data-p="Head Tee Blood" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:33%"></i></div><div class="stk">New drop</div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_tee_3.png" alt="Head Tee Vintage" /><span class="tag">White</span></div>
+        <div class="info">
+          <div class="pt">Head Tee — Vintage</div>
+          <div class="pd" data-i18n="mp_d5">Washed White Tee, Distressed-Print.</div>
+          <div class="row"><div class="price">€ 39</div><div class="add" data-p="Head Tee Vintage" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:26%"></i></div><div class="stk">Limited</div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_cap_1.png" alt="Head Trucker Black" /><span class="tag">Trucker</span></div>
+        <div class="info">
+          <div class="pt">Head Trucker — Black</div>
+          <div class="pd" data-i18n="mp_d6">Mesh-Back Trucker, Kopf auf der Front.</div>
+          <div class="row"><div class="price">€ 32</div><div class="add" data-p="Head Trucker Black" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:55%"></i></div><div class="stk">Bestseller</div>
+        </div>
+      </article>
+
+<article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_cap_3.png" alt="Head Snapback Grey" /><span class="tag">Snapback</span></div>
+        <div class="info">
+          <div class="pt">Head Snapback — Grey</div>
+          <div class="pd" data-i18n="mp_d8">Flat-Brim Snapback in Grau.</div>
+          <div class="row"><div class="price">€ 32</div><div class="add" data-p="Head Snapback Grey" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:38%"></i></div><div class="stk">In stock</div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_cap_4.png" alt="Head Trucker Red" /><span class="tag">Red</span></div>
+        <div class="info">
+          <div class="pt">Head Trucker — Red</div>
+          <div class="pd" data-i18n="mp_d9">Blutrote Trucker-Cap, Print in Schwarz.</div>
+          <div class="row"><div class="price">€ 32</div><div class="add" data-p="Head Trucker Red" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:60%"></i></div><div class="stk">Limited color</div>
+        </div>
+      </article>
+
+      <article class="prod">
+        <div class="art"><img class="pimg" src="assets/products/m_cap_5.png" alt="Head Fitted Black" /><span class="tag">Fitted</span></div>
+        <div class="info">
+          <div class="pt">Head Fitted — Black</div>
+          <div class="pd" data-i18n="mp_d10">Fitted Baseball-Cap, gestickter Kopf.</div>
+          <div class="row"><div class="price">€ 34</div><div class="add" data-p="Head Fitted Black" data-i18n="dr_add">In den Warenkorb</div></div>
+          <div class="bar"><i style="width:80%"></i></div><div class="stk">Pre-order</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands sec-pad" id="brands">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" data-i18n="br_kicker">05 · For Brands</div>
+      <h2 data-i18n="br_h2">Das Gesicht für <em>mutige Marken.</em></h2>
+      <p data-i18n="br_p">Tattoo, Streetwear, Energy, Horror-Gaming, Halloween, Metal. Schon heute gesponsert von Fortify Products USA, die Tür für Markendeals steht offen.</p>
+    </div>
+    <div class="brand-grid">
+      <div class="offer reveal">
+        <div class="o"><div class="oi">01</div><div><h4 data-i18n="br_o1t">Sponsored Content</h4><p data-i18n="br_o1d">Reels &amp; Posts, in denen dein Produkt vom „Teufel" selbst gezeigt wird.</p></div></div>
+        <div class="o"><div class="oi">02</div><div><h4 data-i18n="br_o2t">Co-Branded Drops</h4><p data-i18n="br_o2d">„Devil Edition" Produkte: deine Marke × sein Sigil. Limitiert, viral.</p></div></div>
+        <div class="o"><div class="oi">03</div><div><h4 data-i18n="br_o3t">Real-World Campaign Face</h4><p data-i18n="br_o3d">Der echte Dämon für Halloween-, Horror-Game- &amp; Festival-Kampagnen.</p></div></div>
+        <div class="o"><div class="oi">04</div><div><h4 data-i18n="br_o4t">Live Appearances</h4><p data-i18n="br_o4d">Conventions, Messen, Events: als Headliner, der Menschenmengen zieht.</p></div></div>
+      </div>
+      <div class="ratecard reveal">
+        <h3 data-i18n="br_rc_h">Reichweite &amp; Rahmen</h3>
+        <div class="sub" data-i18n="br_rc_sub">Beispiel-Konditionen · verhandelbar</div>
+        <div class="rate-line"><span class="rl" data-i18n="br_rl1">Instagram-Reel (integriert)</span><span class="rv" data-i18n="br_rv1">ab € 1.500</span></div>
+        <div class="rate-line"><span class="rl" data-i18n="br_rl2">Reel + Story-Paket</span><span class="rv" data-i18n="br_rv2">ab € 2.500</span></div>
+        <div class="rate-line"><span class="rl" data-i18n="br_rl3">Co-Branded Produkt-Launch</span><span class="rv" data-i18n="br_rv3">Umsatzbeteiligung</span></div>
+        <div class="rate-line"><span class="rl" data-i18n="br_rl4">Event-/Convention-Auftritt</span><span class="rv" data-i18n="br_rv4">ab € 2.000 + Reise</span></div>
+        <div class="rate-line"><span class="rl" data-i18n="br_rl5">Earned-Media-Effekt</span><span class="rv">Reuters · RTL · TikTok</span></div>
+        <p class="disc" data-i18n="br_disc">Werte sind Orientierung für ein Profil dieser Größe &amp; PR-Reichweite, keine festen Tarife.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POTENTIAL / CALCULATOR -->
+<section class="potential sec-pad" id="potential">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker" data-i18n="pot_kicker">06 · Das Umsatzpotenzial</div>
+      <h2 data-i18n="pot_h2">Heute: <em>0 €.</em><br>Möglich: zieh am Regler.</h2>
+      <p data-i18n="pot_p">Deine Reichweite ist schon da. Schieb die Werte und sieh, was selbst bei winzigen Conversion-Raten aus 500.000 Followern wird. Konservativ gerechnet.</p>
+    </div>
+    <div class="calc reveal">
+      <div class="calc-controls">
+        <div class="ctl">
+          <label><span data-i18n="pot_l_foll">Follower</span> <b id="vFoll">500.000</b></label>
+          <input type="range" id="foll" min="100000" max="1000000" step="10000" value="500000">
+        </div>
+        <div class="ctl">
+          <label><span data-i18n="pot_l_conv">Merch-Käufer / Monat</span> <b id="vConv">0,3 %</b></label>
+          <input type="range" id="conv" min="0" max="20" step="1" value="3">
+        </div>
+        <div class="ctl">
+          <label><span data-i18n="pot_l_aov">Ø Warenkorb</span> <b id="vAov">45 €</b></label>
+          <input type="range" id="aov" min="25" max="120" step="5" value="45">
+        </div>
+        <div class="ctl">
+          <label><span data-i18n="pot_l_mem">Zahlende Member</span> <b id="vMem">0,4 %</b></label>
+          <input type="range" id="mem" min="0" max="20" step="1" value="4">
+        </div>
+        <div class="ctl">
+          <label><span data-i18n="pot_l_deals">Brand-Deals / Monat</span> <b id="vDeals">1</b></label>
+          <input type="range" id="deals" min="0" max="6" step="1" value="1">
+        </div>
+      </div>
+      <div class="calc-out">
+        <div class="today"><span class="k" data-i18n="pot_today">Aktuell verdient</span><span class="v">0 €</span></div>
+        <div class="big" data-i18n="pot_big">Realistisches Potenzial</div>
+        <div class="total" id="total">0 €</div>
+        <div class="per"><span data-i18n="pot_permo">pro Monat</span> &nbsp;·&nbsp; <b id="year">0 €</b> <span data-i18n="pot_year">/ Jahr</span></div>
+        <div class="breakdown">
+          <div class="bd"><span class="bl" data-i18n="pot_bd1">Merch-Store</span><span class="bv" id="bMerch">0 €</span></div>
+          <div class="bd"><span class="bl" data-i18n="pot_bd2">Membership (wiederkehrend)</span><span class="bv" id="bMem">0 €</span></div>
+          <div class="bd"><span class="bl" data-i18n="pot_bd3">Brand-Deals &amp; Sponsoring</span><span class="bv" id="bDeals">0 €</span></div>
+        </div>
+        <p class="calc-note" data-i18n="pot_note">Illustrative Modellrechnung auf Basis branchenüblicher Conversion-Raten für Creator-Commerce. Keine Garantie, aber zeigt die Größenordnung dessen, was bisher ungenutzt liegen bleibt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact sec-pad" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="kicker" data-i18n="ct_kicker">07 · Let's Build</div>
+        <h2 data-i18n="ct_h2">Collab? <em>Booking?</em><br>Sprich mit dem Teufel.</h2>
+        <p style="color:var(--bone-dim);margin-top:18px;max-width:42ch" data-i18n="ct_p">Für Markendeals, Auftritte, Presse oder Custom-Tattoos. Wir melden uns binnen 48h.</p>
+        <a href="#contact" class="btn btn-primary book-cta" data-i18n="book_now" onclick="setTimeout(function(){var i=document.querySelector('form input');if(i)i.focus();},350)">Buch jetzt →</a>
+        <div class="socials">
+          <a class="soc" href="https://www.instagram.com/diabao.praddo_diablo.praddo/" target="_blank" rel="noopener"><span class="sn">Instagram</span><span class="sh">@diabao.praddo_diablo.praddo →</span></a>
+          <a class="soc" href="https://www.instagram.com/diabao.praddo_diablo.praddo/" target="_blank" rel="noopener"><span class="sn" data-i18n="ct_soc2">Tattoo Works</span><span class="sh">@diablopraddoworks →</span></a>
+          <div class="soc"><span class="sn" data-i18n="ct_soc3">Booking · Europa</span><span class="sh">booking@diablopraddo.com</span></div>
+          <div class="soc"><span class="sn" data-i18n="ct_mgmt">Management (Europa)</span><span class="sh">Riverside Ink</span></div>
+          <div class="soc"><span class="sn" data-i18n="ct_office">Office</span><span class="sh">info@diablopraddo.com</span></div>
+        </div>
+      </div>
+      <form class="reveal" onsubmit="event.preventDefault();showToast(t('toast_sent'));this.reset();">
+        <div class="field"><label data-i18n="ct_f_name">Name</label><input required placeholder="Dein Name" data-i18n-ph="ct_ph_name"></div>
+        <div class="field"><label data-i18n="ct_f_brand">Marke / Firma</label><input placeholder="optional" data-i18n-ph="ct_ph_opt"></div>
+        <div class="field"><label data-i18n="ct_f_topic">Anliegen</label>
+          <select><option data-i18n="ct_o1">Markendeal / Sponsoring</option><option data-i18n="ct_o2">Co-Branded Produkt</option><option data-i18n="ct_o3">Event / Auftritt</option><option data-i18n="ct_o4">Presse / Doku</option><option data-i18n="ct_o5">Custom Tattoo</option></select>
+        </div>
+        <div class="field"><label data-i18n="ct_f_msg">Nachricht</label><textarea required placeholder="Erzähl uns von eurem Projekt…" data-i18n-ph="ct_ph_msg"></textarea></div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center" data-i18n="ct_send">Anfrage senden →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <div class="ftitle">DIABLO PRADDO™</div>
+      <p data-i18n="ft_p">Konzept-Demo einer Monetarisierungs-Website. Produkt-Mockups, Preise und Rate-Card sind illustrative Vorschläge. Instagram-Inhalte © Diabão Praddo. Erstellt zur Veranschaulichung des Umsatzpotenzials.</p>
+    </div>
+    <div class="credit">
+      <img class="rs-logo" src="assets/riverside-ink.png" alt="Riverside Ink" />
+      <span>Pitch &amp; Design · Riverside Ink</span>
+      <span>diablopraddo.com</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- cart button + toast -->
+<a id="bookbtn" href="#contact" data-i18n="book_now">Buch jetzt →</a>
+<div id="cartbtn" onclick="showToast(t('toast_checkout'))"><span data-i18n="cart_label">Warenkorb</span><span class="cc" id="cartCount">0</span></div>
+<div id="toast"><span class="ic">✓</span><span id="toastMsg">…</span></div>
+
+<script src="https://www.instagram.com/embed.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+/* ---- reveal on scroll ---- */
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---- count up hero stat ---- */
+const cu=document.querySelector('[data-count]');
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){animCount(cu);cio.unobserve(e.target)}}),{threshold:.5});
+if(cu) cio.observe(cu);
+function animCount(el){const end=+el.dataset.count,suf=el.dataset.suffix||'';let s=null;
+  function step(t){if(!s)s=t;const p=Math.min((t-s)/1100,1);el.textContent=Math.floor(p*end)+suf;if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+
+/* ---- cart ---- */
+let cart=0;
+document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>{
+  cart++;document.getElementById('cartCount').textContent=cart;
+  document.getElementById('cartbtn').classList.add('show');
+  showToast(t('toast_cart').replace('%s', b.dataset.p));
+}));
+let tT;
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2600)}
+
+/* ---- revenue calculator ---- */
+const eur=n=>new Intl.NumberFormat('de-DE',{maximumFractionDigits:0}).format(Math.round(n))+' €';
+const ids=['foll','conv','aov','mem','deals'].map(i=>document.getElementById(i));
+function calc(){
+  const foll=+ids[0].value, conv=+ids[1].value/10, aov=+ids[2].value, mem=+ids[3].value/10, deals=+ids[4].value;
+  // labels
+  document.getElementById('vFoll').textContent=new Intl.NumberFormat('de-DE').format(foll);
+  document.getElementById('vConv').textContent=conv.toLocaleString('de-DE',{minimumFractionDigits:1})+' %';
+  document.getElementById('vAov').textContent=aov+' €';
+  document.getElementById('vMem').textContent=mem.toLocaleString('de-DE',{minimumFractionDigits:1})+' %';
+  document.getElementById('vDeals').textContent=deals;
+  // model: margin 55% on merch, member avg ~13€/mo, deal avg 2000€
+  const merch=foll*(conv/100)*aov*0.55;
+  const member=foll*(mem/100)*13;
+  const brand=deals*2000;
+  const total=merch+member+brand;
+  document.getElementById('bMerch').textContent=eur(merch);
+  document.getElementById('bMem').textContent=eur(member);
+  document.getElementById('bDeals').textContent=eur(brand);
+  document.getElementById('total').textContent=eur(total);
+  document.getElementById('year').textContent=eur(total*12);
+}
+ids.forEach(i=>i.addEventListener('input',calc));
+calc();
+
+/* ---- Lenis smooth scroll ---- */
+let lenis=null;
+if(window.Lenis){
+  document.documentElement.style.scrollBehavior='auto';
+  lenis=new Lenis({lerp:0.085,wheelMultiplier:1}); window.__lenis=lenis;
+  function rafL(t){lenis.raf(t);requestAnimationFrame(rafL);} requestAnimationFrame(rafL);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const id=a.getAttribute('href'); if(id.length>1){ const el=document.querySelector(id);
+      if(el){ e.preventDefault(); lenis.scrollTo(el,{offset:-58,duration:1.1}); } }
+  }));
+}
+
+/* ---- scroll-scrub manifesto ---- */
+(function(){
+  const sec=document.querySelector('.manifesto'); if(!sec) return;
+  const canvas=document.getElementById('scrubCanvas'); if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const N=120; const imgs=new Array(N); let firstLoaded=false;
+  const pad=n=>String(n).padStart(4,'0');
+  for(let i=0;i<N;i++){ const im=new Image(); im.src='assets/frames/f'+pad(i+1)+'.jpg';
+    im.onload=()=>{ if(!firstLoaded){firstLoaded=true; render();} }; imgs[i]=im; }
+  let dpr=Math.min(window.devicePixelRatio||1,2);
+  function resize(){ dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=Math.round(window.innerWidth*dpr); canvas.height=Math.round(window.innerHeight*dpr); curIdx=-1; render(); }
+  function drawCover(img){ if(!img||!img.complete||!img.naturalWidth) return;
+    const cw=canvas.width,ch=canvas.height, ir=img.naturalWidth/img.naturalHeight, cr=cw/ch; let w,h,x,y;
+    if(cr>ir){ w=cw; h=cw/ir; x=0; y=(ch-h)/2; } else { h=ch; w=ch*ir; y=0; x=(cw-w)/2; }
+    ctx.drawImage(img,x,y,w,h); }
+  const words=[...document.querySelectorAll('.mword')]; const prog=document.getElementById('mProg');
+  const brazil=document.querySelector('.mf-brazil');
+  let curIdx=-1;
+  function render(){ const rect=sec.getBoundingClientRect(); const total=sec.offsetHeight-window.innerHeight;
+    let p=total>0?(-rect.top)/total:0; p=Math.max(0,Math.min(1,p));
+    const idx=Math.min(N-1,Math.floor(p*(N-1)));
+    if(idx!==curIdx){ curIdx=idx; drawCover(imgs[idx]); }
+    if(prog) prog.style.width=(p*100).toFixed(2)+'%';
+    const wi=Math.floor(p*words.length*0.999);
+    words.forEach((w,i)=>w.classList.toggle('on', i===wi && p>0.03 && p<0.985));
+    if(brazil) brazil.classList.toggle('on', wi===0 && p>0.03 && p<0.985); }
+  window.addEventListener('resize',resize); resize();
+  if(lenis){ lenis.on('scroll',render); }
+  window.addEventListener('scroll',render,{passive:true});
+})();
+</script>
+<script src="i18n.js"></script>
+</body>
+</html>
