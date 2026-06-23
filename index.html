@@ -85,11 +85,12 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .nav-cta:hover{background:var(--blood);box-shadow:0 0 24px rgba(226,20,25,.5)}
 .nav-right{display:flex;align-items:center;gap:14px}
 .lang{display:flex;border:1px solid var(--line)}
-.lang button{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:7px 8px;color:var(--muted);background:none;border:none;border-left:1px solid var(--line);cursor:pointer;transition:.15s}
+.lang button{display:flex;align-items:center;justify-content:center;padding:6px 8px;background:none;border:none;border-left:1px solid var(--line);cursor:pointer;transition:.18s;opacity:.58;filter:grayscale(.32) brightness(.95)}
 .lang button:first-child{border-left:none}
-.lang button.on{background:var(--blood);color:#fff}
-.lang button:hover:not(.on){color:var(--bone)}
-@media(max-width:880px){.lang button{padding:6px 6px}}
+.lang button svg{width:21px;height:14px;border-radius:2px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.lang button.on{opacity:1;filter:none;background:rgba(226,20,25,.14);box-shadow:inset 0 -2px 0 var(--blood)}
+.lang button:hover:not(.on){opacity:.9;filter:grayscale(0)}
+@media(max-width:880px){.lang button{padding:5px 6px}.lang button svg{width:19px;height:13px}}
 @media(max-width:880px){.navlinks{display:none}}
 
 /* ---------- hero ---------- */
@@ -342,16 +343,19 @@ footer{border-top:1px solid var(--line-blood);padding:48px 0 36px}
 /* ---------- doku / netflix ---------- */
 .doku{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--black),#170b0a 50%,var(--black))}
 .doku .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
-.poster{position:relative;aspect-ratio:3/4;border:1px solid var(--line-blood);background:#000;overflow:hidden;display:grid;place-items:center}
-.poster img{width:108%;height:108%;object-fit:cover;object-position:center 20%;mix-blend-mode:screen;filter:contrast(1.05) drop-shadow(0 0 40px rgba(226,20,25,.4))}
-.poster .pgrad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,8,7,.85))}
-.poster .ptag{position:absolute;top:16px;right:14px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.18em;
-  background:rgba(10,8,7,.72);border:1px solid var(--line);color:var(--bone-dim);padding:5px 9px;text-transform:uppercase;backdrop-filter:blur(4px)}
-.poster .pname{position:absolute;left:16px;bottom:14px;z-index:3;font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;color:var(--bone)}
+.poster{position:relative;aspect-ratio:3/4;border:1px solid var(--line-blood);background:#000;overflow:hidden;display:grid;place-items:center;border-radius:3px;box-shadow:0 34px 90px -34px rgba(0,0,0,.92),0 0 80px -22px rgba(179,15,18,.5),inset 0 0 0 1px rgba(226,20,25,.16)}
+.poster img:not(.poster-n){width:108%;height:108%;object-fit:cover;object-position:center 18%;filter:contrast(1.13) saturate(1.06) brightness(.95) sepia(.1) hue-rotate(-6deg)}
+.poster::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(125% 95% at 50% 26%,transparent 36%,rgba(10,8,7,.5) 80%,rgba(10,8,7,.95) 100%)}
+.poster::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.4;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.poster .pgrad{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 42%,rgba(10,8,7,.58) 72%,rgba(10,8,7,.96) 100%)}
+.poster .ptag{position:absolute;top:14px;right:14px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.2em;
+  background:rgba(10,8,7,.58);border:1px solid var(--line-blood);color:var(--bone);padding:5px 10px;text-transform:uppercase;backdrop-filter:blur(6px);border-radius:2px}
+.poster .pname{position:absolute;left:18px;bottom:16px;z-index:3;font-family:'Bebas Neue',sans-serif;font-size:2.55rem;line-height:.9;letter-spacing:.05em;color:var(--bone);text-shadow:0 2px 26px rgba(0,0,0,.85);padding-left:14px;border-left:3px solid var(--blood-bright)}
+.poster .pname::after{content:'MMXXVI · ORIGINAL';display:block;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.26em;color:var(--blood-bright);margin-top:5px;font-weight:600}
 .poster .play{position:absolute;inset:0;display:grid;place-items:center;z-index:3}
-.poster .play b{width:74px;height:74px;border-radius:50%;background:rgba(226,20,25,.94);display:grid;place-items:center;color:#fff;
-  font-size:1.5rem;padding-left:5px;box-shadow:0 0 48px rgba(226,20,25,.7);cursor:pointer;transition:.2s;animation:pulse 2.6s ease-out infinite}
-.poster .play b:hover{transform:scale(1.09)}
+.poster .play b{width:76px;height:76px;border-radius:50%;background:rgba(226,20,25,.96);display:grid;place-items:center;color:#fff;
+  font-size:1.55rem;padding-left:6px;box-shadow:0 0 48px rgba(226,20,25,.7),inset 0 0 0 2px rgba(255,255,255,.28);cursor:pointer;transition:.25s;animation:pulse 2.6s ease-out infinite;backdrop-filter:blur(2px)}
+.poster .play b:hover{transform:scale(1.12);background:var(--blood-bright)}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(226,20,25,.6)}70%{box-shadow:0 0 0 26px rgba(226,20,25,0)}100%{box-shadow:0 0 0 0 rgba(226,20,25,0)}}
 .nflx-row{display:flex;align-items:center;gap:16px;margin-bottom:2px}
 .nflx-logo{height:23px;width:auto;display:block}
@@ -393,7 +397,7 @@ footer{border-top:1px solid var(--line-blood);padding:48px 0 36px}
     </div>
     <div class="nav-right">
       <div class="lang" id="lang">
-        <button data-lang="pt">PT</button><button data-lang="en">EN</button><button data-lang="de">DE</button><button data-lang="es">ES</button>
+        <button data-lang="pt" aria-label="Português" title="Português"><svg viewBox="0 0 30 20" preserveAspectRatio="none"><rect width="30" height="20" fill="#009b3a"/><path d="M15 2 28 10 15 18 2 10z" fill="#fedf00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/></svg></button><button data-lang="en" aria-label="English" title="English"><svg viewBox="0 0 60 30" preserveAspectRatio="none"><clipPath id="ukc"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg></button><button data-lang="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 5 3" preserveAspectRatio="none"><rect width="5" height="3" fill="#000"/><rect width="5" height="1" y="1" fill="#D00"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg></button><button data-lang="es" aria-label="Español" title="Español"><svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="3" height="2" fill="#AA151B"/><rect width="3" height="1" y=".5" fill="#F1BF00"/></svg></button>
       </div>
       <a href="#drop" class="nav-cta" data-i18n="nav_shop">Shop →</a>
     </div>
