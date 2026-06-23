@@ -319,7 +319,21 @@ footer{border-top:1px solid var(--line-blood);padding:48px 0 36px}
 .foot .credit{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--bone-dim);text-align:right}
 .foot .credit b{color:var(--ember)}
 .foot .credit span{color:var(--muted);display:block;margin-top:6px}
-.rs-logo{height:56px;width:auto;display:block;margin:0 0 16px auto;opacity:.95}
+.foot .credit .cbrand{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.12em;color:var(--bone);margin-bottom:10px;line-height:1}
+.foot .credit .cbrand b{color:var(--blood-bright);font-weight:400}
+/* ---------- impressum ---------- */
+.impressum{border-top:1px solid var(--line);background:var(--char)}
+.impressum .wrap{padding:48px 28px 42px}
+.impressum h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;color:var(--bone);margin-bottom:22px}
+.imp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.imp-col h4{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember-soft);margin-bottom:10px}
+.imp-col p{font-size:.86rem;color:var(--bone-dim);line-height:1.8}
+.imp-col p .strong{color:var(--bone);font-weight:500}
+.imp-ph{color:var(--muted);font-style:italic;background:rgba(255,90,31,.07);border:1px dashed var(--line-blood);padding:1px 7px;border-radius:2px}
+.imp-col a{color:var(--bone-dim);border-bottom:1px solid var(--line);transition:.2s}
+.imp-col a:hover{color:var(--ember);border-color:var(--ember)}
+.imp-note{font-size:.72rem;color:var(--muted);margin-top:26px;font-style:italic;line-height:1.6;max-width:84ch}
+@media(max-width:880px){.imp-grid{grid-template-columns:1fr;gap:24px}}
 
 /* ---------- toast / cart ---------- */
 #cartbtn{position:fixed;bottom:24px;right:24px;z-index:60;background:var(--blood);color:#fff;font-family:'JetBrains Mono',monospace;
@@ -737,6 +751,35 @@ footer{border-top:1px solid var(--line-blood);padding:48px 0 36px}
   </div>
 </section>
 
+<!-- IMPRESSUM -->
+<section class="impressum" id="impressum">
+  <div class="wrap">
+    <h3>Impressum</h3>
+    <div class="imp-grid">
+      <div class="imp-col">
+        <h4>Anbieter</h4>
+        <p><span class="strong">Fitz Industries</span><br>
+        c/o Riverside Ink<br>
+        <span class="imp-ph">[Strasse &amp; Nr.]</span><br>
+        9430 St. Margrethen<br>Schweiz</p>
+      </div>
+      <div class="imp-col">
+        <h4>Kontakt</h4>
+        <p>E-Mail: <a href="mailto:hello@fitzindustries.ch">hello@fitzindustries.ch</a><br>
+        Telefon: <span class="imp-ph">[+41 …]</span><br>
+        Web: <span class="imp-ph">[fitzindustries.ch]</span></p>
+      </div>
+      <div class="imp-col">
+        <h4>Rechtliches</h4>
+        <p>Rechtsform: <span class="imp-ph">[Einzelfirma / GmbH]</span><br>
+        Vertretung: <span class="imp-ph">[Inhaber:in]</span><br>
+        UID: <span class="imp-ph">[CHE-…]</span></p>
+      </div>
+    </div>
+    <p class="imp-note">⚑ Platzhalter — bitte vor Veröffentlichung mit den echten Firmendaten ersetzen. Konzept-Demo, keine rechtsverbindlichen Angaben.</p>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap foot">
@@ -745,9 +788,9 @@ footer{border-top:1px solid var(--line-blood);padding:48px 0 36px}
       <p data-i18n="ft_p">Konzept-Demo einer Monetarisierungs-Website. Produkt-Mockups, Preise und Rate-Card sind illustrative Vorschläge. Instagram-Inhalte © Diabão Praddo. Erstellt zur Veranschaulichung des Umsatzpotenzials.</p>
     </div>
     <div class="credit">
-      <img class="rs-logo" src="assets/riverside-ink.png" alt="Riverside Ink" />
-      <span>Pitch &amp; Design · Riverside Ink</span>
-      <span>diablopraddo.com</span>
+      <div class="cbrand">FITZ <b>INDUSTRIES</b></div>
+      <span>Pitch &amp; Design · St. Margrethen · CH</span>
+      <span><a href="#impressum">Impressum</a></span>
       <span>© 2026</span>
     </div>
   </div>
